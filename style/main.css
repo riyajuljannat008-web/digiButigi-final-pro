@@ -471,3 +471,120 @@
   font-size: 13px;
   color: #555;
 }
+
+
+/* responsive */
+
+/* ========== General Fixes ========== */
+img {
+  max-width: 100%;
+  height: auto;
+}
+
+/* Grid responsive */
+.product-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  gap: 16px;
+  padding: 10px;
+}
+
+/* Navbar Responsive */
+.navbar {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  padding: 10px;
+}
+
+.nav-left,
+.nav-right {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.nav-search {
+  flex: 1;
+  display: flex;
+  max-width: 500px;
+}
+
+.nav-search input {
+  flex: 1;
+  min-width: 0;
+}
+
+/* Sub-navbar scrollable on mobile */
+.sub-navbar {
+  display: flex;
+  flex-wrap: wrap;
+  overflow-x: auto;
+  gap: 12px;
+  padding: 8px 10px;
+}
+
+/* Footer Responsive */
+.footer-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 20px;
+}
+
+/* ========== Mobile First Breakpoints ========== */
+@media (max-width: 768px) {
+  /* Navbar stacked */
+  .navbar {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .nav-search {
+    width: 100%;
+    margin-top: 8px;
+  }
+
+  .nav-right {
+    flex-wrap: wrap;
+    gap: 8px;
+  }
+
+  /* Stats Section */
+  .stats-container {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    text-align: center;
+  }
+  .divider {
+    display: none;
+  }
+
+  /* App Download Section */
+  .app-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+  }
+  .app-image {
+    margin-bottom: 15px;
+  }
+}
+
+/* Tablet/Desktop Improvements */
+@media (min-width: 769px) {
+  .app-container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 20px;
+  }
+  .app-text {
+    flex: 1;
+  }
+  .app-image {
+    flex: 1;
+  }
+}
