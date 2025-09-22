@@ -237,3 +237,54 @@ body {
 
 
   
+
+/* ================= Responsive Design ================== */
+@media (max-width: 1024px) {
+  .nav-search {
+    margin: 0 10px;
+  }
+  .product-grid {
+    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  }
+}
+
+@media (max-width: 768px) {
+  .navbar {
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 10px;
+  }
+  .nav-search {
+    width: 100%;
+    margin: 10px 0;
+  }
+  .sub-navbar {
+    flex-wrap: wrap;
+  }
+  .product-grid {
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+  }
+}
+
+@media (max-width: 480px) {
+  .logo {
+    font-size: 18px;
+  }
+  .nav-right {
+    flex-direction: column;
+    align-items: flex-start;
+    margin-top: 10px;
+  }
+  .nav-search select, .nav-search input {
+    font-size: 14px;
+  }
+  .product-card img {
+    height: 120px;
+  }
+  .cart-page {
+    flex-direction: column;
+  }
+  .cart-left, .cart-right {
+    width: 100%;
+  }
+}
