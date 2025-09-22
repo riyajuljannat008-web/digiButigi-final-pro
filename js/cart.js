@@ -63,3 +63,76 @@ function startPayment() {
     document.getElementById("finalSubmit").click();
   }, 5000);
 }
+
+
+
+// sarch
+
+// Demo data
+const categories = [
+  { name: "AC Repair", link: "ac-repair.html" },
+  { name: "Beauty & Wellness", link: "beauty-wellness.html" },
+  { name: "Electronics", link: "electronics.html" },
+  { name: "Cleaning Solution", link: "cleaning-solution.html" },
+  { name: "Men's Care", link: "mens-care.html" }
+];
+
+const products = [
+  { name: "Samsung AC", link: "fashion.html" },
+  { name: "LG Washing Machine", link: "product-lg-wash.html" },
+  { name: "Sony Headphones", link: "gift.html" },
+  { name: "Laptop Repair Service", link: "product-laptop-repair.html" },
+  { name: "Mobile Screen Guard", link: "product-screen-guard.html" }
+];
+
+// Live search
+function liveSearch(event) {
+  const query = document.getElementById("searchInput").value.toLowerCase();
+  const categoryFilter = document.getElementById("searchCategory").value;
+  const resultsDiv = document.getElementById("searchResults");
+
+  resultsDiv.innerHTML = "";
+
+  if (query === "") {
+    resultsDiv.style.display = "none";
+    return;
+  }
+
+  resultsDiv.style.display = "block";
+  let results = [];
+
+  if (categoryFilter === "all" || categoryFilter === "categories") {
+    results = results.concat(categories.filter(c => c.name.toLowerCase().includes(query)));
+  }
+
+  if (categoryFilter === "all" || categoryFilter === "products") {
+    results = results.concat(products.filter(p => p.name.toLowerCase().includes(query)));
+  }
+
+  if (results.length > 0) {
+    results.forEach((r, idx) => {
+      const link = document.createElement("a");
+      link.href = r.link;
+      link.textContent = r.name;
+      link.classList.add("search-item");
+      if (idx === 0) link.classList.add("first-result"); // প্রথমটা মার্ক করলাম
+      resultsDiv.appendChild(link);
+    });
+
+    // Enter চাপলে প্রথম suggestion এ যাবে
+    if (event.key === "Enter") {
+      const first = document.querySelector(".first-result");
+      if (first) window.location.href = first.href;
+    }
+
+  } else {
+    resultsDiv.innerHTML = "<p class='no-result'>No results found!</p>";
+  }
+}
+
+// Search button দিয়ে কাজ করানো
+function performSearch() {
+  const query = document.getElementById("searchInput").value;
+  if (query.trim() === "") return;
+  alert("Searching for: " + query);
+}
