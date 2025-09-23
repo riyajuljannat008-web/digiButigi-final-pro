@@ -1,8 +1,8 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  \1  <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Books - DigiButigi</title>
+   <meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Home - DigiButigi</title>
   <link rel="stylesheet" href="style/x.css">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
@@ -48,6 +48,7 @@
 
   <!-- Sub Navbar -->
   <div class="sub-navbar">
+    <span class="all-btn"><i class="fa fa-bars"></i> All</span>
     <a href="electronics.html">OTT & Streaming</a>
     <a href="fashion.html">Productivity Tools</a>
     <a href="ai.html">Ai Tools</a>
@@ -61,75 +62,114 @@
 
 <h2>Music</h2><div class='product-grid'>
         <div class="product-card">
-          <img src="images/demo1.jpg" alt="Books 1">
-          <h3>Books Product 1</h3>
+          <img src="images/demo1.jpg" alt="Home 1">
+          <h3>Home Product 1</h3>
           <p>$10</p>
-          <button onclick="addToCart('Books Product 1',10,'images/demo1.jpg')">Add to Cart</button>
+          <button onclick="addToCart('Home Product 1',10,'images/demo1.jpg')">Add to Cart</button>
         </div>
         
         <div class="product-card">
-          <img src="images/demo2.jpg" alt="Books 2">
-          <h3>Books Product 2</h3>
+          <img src="images/demo2.jpg" alt="Home 2">
+          <h3>Home Product 2</h3>
           <p>$20</p>
-          <button onclick="addToCart('Books Product 2',20,'images/demo2.jpg')">Add to Cart</button>
+          <button onclick="addToCart('Home Product 2',20,'images/demo2.jpg')">Add to Cart</button>
         </div>
         
         <div class="product-card">
-          <img src="images/demo3.jpg" alt="Books 3">
-          <h3>Books Product 3</h3>
+          <img src="images/demo3.jpg" alt="Home 3">
+          <h3>Home Product 3</h3>
           <p>$30</p>
-          <button onclick="addToCart('Books Product 3',30,'images/demo3.jpg')">Add to Cart</button>
+          <button onclick="addToCart('Home Product 3',30,'images/demo3.jpg')">Add to Cart</button>
         </div>
         
         <div class="product-card">
-          <img src="images/demo4.jpg" alt="Books 4">
-          <h3>Books Product 4</h3>
+          <img src="images/demo4.jpg" alt="Home 4">
+          <h3>Home Product 4</h3>
           <p>$40</p>
-          <button onclick="addToCart('Books Product 4',40,'images/demo4.jpg')">Add to Cart</button>
+          <button onclick="addToCart('Home Product 4',40,'images/demo4.jpg')">Add to Cart</button>
         </div>
         
         <div class="product-card">
-          <img src="images/demo5.jpg" alt="Books 5">
-          <h3>Books Product 5</h3>
+          <img src="images/demo5.jpg" alt="Home 5">
+          <h3>Home Product 5</h3>
           <p>$50</p>
-          <button onclick="addToCart('Books Product 5',50,'images/demo5.jpg')">Add to Cart</button>
+          <button onclick="addToCart('Home Product 5',50,'images/demo5.jpg')">Add to Cart</button>
         </div>
         
         <div class="product-card">
-          <img src="images/demo6.jpg" alt="Books 6">
-          <h3>Books Product 6</h3>
+          <img src="images/demo6.jpg" alt="Home 6">
+          <h3>Home Product 6</h3>
           <p>$60</p>
-          <button onclick="addToCart('Books Product 6',60,'images/demo6.jpg')">Add to Cart</button>
+          <button onclick="addToCart('Home Product 6',60,'images/demo6.jpg')">Add to Cart</button>
         </div>
         
         <div class="product-card">
-          <img src="images/demo7.jpg" alt="Books 7">
-          <h3>Books Product 7</h3>
+          <img src="images/demo7.jpg" alt="Home 7">
+          <h3>Home Product 7</h3>
           <p>$70</p>
-          <button onclick="addToCart('Books Product 7',70,'images/demo7.jpg')">Add to Cart</button>
+          <button onclick="addToCart('Home Product 7',70,'images/demo7.jpg')">Add to Cart</button>
         </div>
         
         <div class="product-card">
-          <img src="images/demo8.jpg" alt="Books 8">
-          <h3>Books Product 8</h3>
+          <img src="images/demo8.jpg" alt="Home 8">
+          <h3>Home Product 8</h3>
           <p>$80</p>
-          <button onclick="addToCart('Books Product 8',80,'images/demo8.jpg')">Add to Cart</button>
+          <button onclick="addToCart('Home Product 8',80,'images/demo8.jpg')">Add to Cart</button>
         </div>
         
         <div class="product-card">
-          <img src="images/demo9.jpg" alt="Books 9">
-          <h3>Books Product 9</h3>
+          <img src="images/demo9.jpg" alt="Home 9">
+          <h3>Home Product 9</h3>
           <p>$90</p>
-          <button onclick="addToCart('Books Product 9',90,'images/demo9.jpg')">Add to Cart</button>
+          <button onclick="addToCart('Home Product 9',90,'images/demo9.jpg')">Add to Cart</button>
         </div>
         
         <div class="product-card">
-          <img src="images/demo10.jpg" alt="Books 10">
-          <h3>Books Product 10</h3>
+          <img src="images/demo10.jpg" alt="Home 10">
+          <h3>Home Product 10</h3>
           <p>$100</p>
-          <button onclick="addToCart('Books Product 10',100,'images/demo10.jpg')">Add to Cart</button>
+          <button onclick="addToCart('Home Product 10',100,'images/demo10.jpg')">Add to Cart</button>
         </div>
         </div>
 <script src="js/cart.js"></script>
+
+<!-- === Sidebar Drawer (auto-built from sub-navbar) === -->
+<div id="sideMenu" class="side-menu" aria-hidden="true" role="dialog" aria-label="All categories">
+  <div class="side-menu__panel">
+    <button class="side-menu__close" aria-label="Close">×</button>
+    <div class="side-menu__header">
+      Hello, <a href="login.html">Login</a>
+    </div>
+    <div class="side-menu__section">
+      <h3>Shop by Category</h3>
+      <nav id="sideMenuCats" class="side-menu__list"></nav>
+    </div>
+  </div>
+</div>
+
+<script>
+(function(){
+  function populateMenu(){
+    const sideList = document.getElementById('sideMenuCats');
+    if(!sideList) return;
+    sideList.innerHTML = '';
+    document.querySelectorAll('.sub-navbar a')?.forEach(a=>{
+      const item = a.cloneNode(true);
+      item.addEventListener('click', ()=> closeMenu());
+      sideList.appendChild(item);
+    });
+  }
+  const sideMenu = document.getElementById('sideMenu');
+  function openMenu(){ populateMenu(); sideMenu?.classList.add('open'); document.body.style.overflow='hidden'; sideMenu?.setAttribute('aria-hidden','false'); }
+  function closeMenu(){ sideMenu?.classList.remove('open'); document.body.style.overflow=''; sideMenu?.setAttribute('aria-hidden','true'); }
+  const allBtn = document.querySelector('.sub-navbar .all-btn') || document.querySelector('.sub-navbar span');
+  if(allBtn){ allBtn.style.cursor='pointer'; allBtn.addEventListener('click', openMenu); }
+  document.addEventListener('click', function(e){ if(e.target && e.target.classList && e.target.classList.contains('side-menu__close')) closeMenu(); });
+  sideMenu?.addEventListener('click', (e)=>{ if(e.target === sideMenu) closeMenu(); });
+  window.addEventListener('keydown', (e)=>{ if(e.key==='Escape') closeMenu(); });
+  window.__openSideMenu = openMenu; window.__closeSideMenu = closeMenu;
+})();
+</script>
+
 </body>
 </html>

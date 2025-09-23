@@ -52,11 +52,8 @@
 
   <!-- Sub Navbar -->
   <div class="sub-navbar">
-    <span>
-      <!-- <p onclick="document.getElementById('our-category').scrollIntoView({behavior:'smooth'})"> -->
-        All
-      </p>
-    </span>
+    <span class="all-btn" role="button" aria-controls="sideMenu"><i class="fa fa-bars"></i> All</span>
+
     <a href="electronics.html">OTT & Streaming</a>
     <a href="fashion.html">Productivity Tools</a>
     <a href="ai.html">Ai Tools</a>
@@ -356,6 +353,45 @@
       </div>
     </footer>
   </footer>
+
+<!-- === Sidebar Drawer (auto-built from sub-navbar) === -->
+<div id="sideMenu" class="side-menu" aria-hidden="true" role="dialog" aria-label="All categories">
+  <div class="side-menu__panel">
+    <button class="side-menu__close" aria-label="Close">×</button>
+    <div class="side-menu__header">
+      Hello, <a href="login.html">Login</a>
+    </div>
+    <div class="side-menu__section">
+      <h3>Shop by Category</h3>
+      <nav id="sideMenuCats" class="side-menu__list"></nav>
+    </div>
+  </div>
+</div>
+
+<script>
+(function(){
+  function populateMenu(){
+    const sideList = document.getElementById('sideMenuCats');
+    if(!sideList) return;
+    sideList.innerHTML = '';
+    document.querySelectorAll('.sub-navbar a')?.forEach(a=>{
+      const item = a.cloneNode(true);
+      item.addEventListener('click', ()=> closeMenu());
+      sideList.appendChild(item);
+    });
+  }
+  const sideMenu = document.getElementById('sideMenu');
+  function openMenu(){ populateMenu(); sideMenu?.classList.add('open'); document.body.style.overflow='hidden'; sideMenu?.setAttribute('aria-hidden','false'); }
+  function closeMenu(){ sideMenu?.classList.remove('open'); document.body.style.overflow=''; sideMenu?.setAttribute('aria-hidden','true'); }
+  const allBtn = document.querySelector('.sub-navbar .all-btn') || document.querySelector('.sub-navbar span');
+  if(allBtn){ allBtn.style.cursor='pointer'; allBtn.addEventListener('click', openMenu); }
+  document.addEventListener('click', function(e){ if(e.target && e.target.classList && e.target.classList.contains('side-menu__close')) closeMenu(); });
+  sideMenu?.addEventListener('click', (e)=>{ if(e.target === sideMenu) closeMenu(); });
+  window.addEventListener('keydown', (e)=>{ if(e.key==='Escape') closeMenu(); });
+  window.__openSideMenu = openMenu; window.__closeSideMenu = closeMenu;
+})();
+</script>
+
 </body>
 
 </html>
