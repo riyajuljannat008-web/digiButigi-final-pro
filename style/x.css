@@ -288,3 +288,41 @@ body {
     width: 100%;
   }
 }
+
+/* === Added by Fix Pass: Base reset + navbar + sub-navbar scroll === */
+:root{ --navh: 56px; }
+
+*,
+*::before,
+*::after{ box-sizing: border-box; }
+
+img, svg, video{ max-width:100%; height:auto; display:block; }
+
+body{ padding-top: calc(var(--navh) + 8px); }
+
+.navbar{ min-height: var(--navh); }
+
+/* Make sub-navbar scrollable on mobile */
+.sub-navbar{
+  overflow-x: auto;
+  white-space: nowrap;
+  gap: 8px;
+  scrollbar-width: thin;
+}
+.sub-navbar a, .sub-navbar span{
+  display: inline-flex;
+  align-items:center;
+  padding: 8px 10px;
+}
+
+/* Search results popover max width on mobile */
+#searchResults{
+  max-height: 60vh;
+  overflow:auto;
+}
+
+/* Cart layout safety on narrow screens */
+@media (max-width: 640px){
+  .nav-search{ width: 100%; }
+  .cart-row{ grid-template-columns: 64px 1fr auto; }
+}
