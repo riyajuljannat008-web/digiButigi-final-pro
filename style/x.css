@@ -247,100 +247,56 @@ body {
 /* ================= Responsive ================= */
 
 /* Large Desktop (≤1200px) */
-@media (max-width: 1200px){
-  .nav-search{ margin: 0 10px; }
-  .product-grid{ grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); }
+@media (max-width:1200px){
+  .nav-search{ margin:0 10px; }
+  .product-grid{ grid-template-columns: repeat(auto-fit,minmax(200px,1fr)); }
 }
 
 /* Laptop (≤992px) */
-@media (max-width: 992px){
-  .navbar{ flex-direction: column; align-items: flex-start; padding: 10px; }
-  .nav-search{ width: 100%; margin: 10px 0; }
-  .sub-navbar{ flex-wrap: wrap; }
-  .product-grid{ grid-template-columns: repeat(auto-fit, minmax(170px, 1fr)); }
+@media (max-width:992px){
+  .navbar{ padding:10px; }
+  .nav-search{ width:100%; margin:10px 0; }
+  .sub-navbar{ flex-wrap:wrap; }
 }
 
 /* Tablet (≤768px) */
-@media (max-width: 768px){
-  .nav-search{ width: 100%; }
-  .cart-row{ grid-template-columns: 64px 1fr auto; }
-  .product-grid{ grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); }
+@media (max-width:768px){
+  .nav-search{ width:100%; }
+  .cart-row{ grid-template-columns:64px 1fr auto; }
 }
 
-/* === MOBILE LAYOUT: as per sketch === */
-@media (max-width: 600px){
-
-  /* Navbar = 2 rows */
+/* Mobile (≤600px) */
+@media (max-width:600px){
   .navbar{
-    display:flex;
-    flex-wrap:wrap;
-    align-items:center;
-    gap:8px;
-    padding:8px 10px;
+    display:flex; flex-wrap:wrap; align-items:center;
+    gap:8px; padding:8px 10px;
   }
-
-  /* Row-1: left side = logo + location */
-  .nav-left{
-    order:1;
-    flex:1 1 auto;
-    display:flex;
-    align-items:center;
-    gap:8px;
-  }
-
-  /* Row-1: right side = EN + Orders + Cart */
+  .nav-left{ order:1; flex:1 1 auto; display:flex; align-items:center; gap:8px; }
   .nav-right{
-    order:2;
-    margin-left:auto;
-    display:flex;
-    align-items:center;
-    gap:10px;
-    flex:0 0 auto;
-    white-space:nowrap; /* এক লাইনে রাখো */
+    order:2; margin-left:auto; display:flex; align-items:center;
   }
-
-  /* Row-2: full width search */
-  .nav-search{
-    order:3;
-    flex:1 0 100%;
-    margin-top:6px;
-  }
-
-  /* Account লুকাও, EN দেখাও ও কমপ্যাক্ট করো */
+  /* hide EN, Orders, Account */
+  .nav-right .lang,
+  .nav-right .orders,
   .nav-right .account{ display:none !important; }
-  .nav-right .lang{
-    display:inline-flex !important;
-    align-items:center; gap:6px;
-    font-size:13px;
-    padding:6px 8px;
-    border-radius:16px;
-    background:#1f2937; color:#fff;
-  }
-  .nav-right .lang img{ width:18px; height:auto; }
-
-  /* Orders/Cart = ছোট পিল বাটন */
-  .nav-right .orders br,
-  .nav-right .orders span{ display:none !important; }
-  .nav-right .orders a,
+  /* show only cart */
   .nav-right .cart a{
     display:inline-flex; align-items:center; gap:6px;
-    padding:6px 10px;
-    background:#232f3e; color:#fff !important;
-    border-radius:16px; text-decoration:none;
-    font-size:14px;
+    padding:6px 10px; background:#232f3e; color:#fff !important;
+    border-radius:16px; text-decoration:none; font-size:14px;
   }
+  .nav-search{ order:3; flex:1 0 100%; margin-top:6px; }
 
-  /* Sub-navbar: শুধু All থাকবে, বাকি লিঙ্ক Drawer-এ */
-  .sub-navbar{ justify-content:flex-start; }
+  /* sub-nav: only All button */
   .sub-navbar a{ display:none !important; }
   .sub-navbar .all-btn{ display:inline-flex !important; }
 }
 
-
 /* Accessibility: reduce motion */
-@media (prefers-reduced-motion: reduce){
-  .side-menu, .side-menu__panel{ transition: none; }
+@media (prefers-reduced-motion:reduce){
+  .slider, .side-menu__panel{ transition:none; }
 }
+
 
 /* Price styles */
 .product-card .price-bdt{
