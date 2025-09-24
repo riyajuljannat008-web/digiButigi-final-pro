@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Home - DigiButigi</title>
+<title>DigiButigi - Designing Tools</title>
   <link rel="stylesheet" href="style/x.css">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
@@ -12,10 +12,10 @@
   <div class="navbar">
     <div class="nav-left">
       <a href="index.html" class="logo">DigiButigi</a>
-      <div class="deliver">
+      <!-- <div class="deliver">
         <i class="fa-solid fa-location-dot"></i>
         <span>Deliver to <b>World Wide</b></span>
-      </div>
+      </div> -->
     </div>
 
     <div class="nav-search">
@@ -62,48 +62,48 @@
 
 <h2>Designing Tools</h2><div class='product-grid'>
         <div class="product-card">
-          <img src="images/demo1.jpg" alt="Home 1">
+          <img src="style/images/designing tools/1.jpg" alt="Home 1">
           <h3>Home Product 1</h3>
           <p>$10</p>
           <button onclick="addToCart('Home Product 1',10,'images/demo1.jpg')">Add to Cart</button>
         </div>
         
         <div class="product-card">
-          <img src="images/demo2.jpg" alt="Home 2">
+          <img src="style/images/designing tools/2.jpg" alt="Home 2">
           <h3>Home Product 2</h3>
           <p>$20</p>
           <button onclick="addToCart('Home Product 2',20,'images/demo2.jpg')">Add to Cart</button>
         </div>
         
         <div class="product-card">
-          <img src="images/demo3.jpg" alt="Home 3">
+          <img src="style/images/designing tools/3.jpg" alt="Home 3">
           <h3>Home Product 3</h3>
           <p>$30</p>
           <button onclick="addToCart('Home Product 3',30,'images/demo3.jpg')">Add to Cart</button>
         </div>
         
         <div class="product-card">
-          <img src="images/demo4.jpg" alt="Home 4">
+          <img src="style/images/designing tools/4.jpg" alt="Home 4">
           <h3>Home Product 4</h3>
           <p>$40</p>
           <button onclick="addToCart('Home Product 4',40,'images/demo4.jpg')">Add to Cart</button>
         </div>
         
         <div class="product-card">
-          <img src="images/demo5.jpg" alt="Home 5">
+          <img src="style/images/designing tools/5.jpg" alt="Home 5">
           <h3>Home Product 5</h3>
           <p>$50</p>
           <button onclick="addToCart('Home Product 5',50,'images/demo5.jpg')">Add to Cart</button>
         </div>
         
         <div class="product-card">
-          <img src="images/demo6.jpg" alt="Home 6">
+          <img src="style/images/designing tools/6.jpg" alt="Home 6">
           <h3>Home Product 6</h3>
           <p>$60</p>
           <button onclick="addToCart('Home Product 6',60,'images/demo6.jpg')">Add to Cart</button>
         </div>
         
-        <div class="product-card">
+        <!-- <div class="product-card">
           <img src="images/demo7.jpg" alt="Home 7">
           <h3>Home Product 7</h3>
           <p>$70</p>
@@ -129,7 +129,7 @@
           <h3>Home Product 10</h3>
           <p>$100</p>
           <button onclick="addToCart('Home Product 10',100,'images/demo10.jpg')">Add to Cart</button>
-        </div>
+        </div> -->
         </div>
 <script src="js/cart.js"></script>
 
@@ -168,6 +168,36 @@
   sideMenu?.addEventListener('click', (e)=>{ if(e.target === sideMenu) closeMenu(); });
   window.addEventListener('keydown', (e)=>{ if(e.key==='Escape') closeMenu(); });
   window.__openSideMenu = openMenu; window.__closeSideMenu = closeMenu;
+})();
+</script>
+<script>
+(function(){
+  // 1 USD = কত BDT — দরকারমতো বদলাও
+  const EXCHANGE_RATE = 128;
+
+  document.addEventListener('DOMContentLoaded', function(){
+    document.querySelectorAll('.product-card').forEach(card=>{
+      // কার্ডে আগে থেকেই যদি BDT/৳ থাকে, কিছু করবো না
+      const hasBDT = [...card.querySelectorAll('p')].some(p=>/BDT|৳/i.test(p.textContent));
+      if(hasBDT) return;
+
+      // কার্ডে $ দামের p খুঁজে বের করা
+      const usdP = [...card.querySelectorAll('p')].find(p => /^\s*\$[\d.]+/.test(p.textContent.trim()));
+      if(!usdP) return;
+
+      const usd = parseFloat(usdP.textContent.replace(/[^0-9.]/g,''));
+      if(!usd) return;
+
+      const bdt = Math.round(usd * EXCHANGE_RATE);
+
+      // নতুন BDT লাইন বানিয়ে $ লাইনের ঠিক আগে বসাই
+      const p = document.createElement('p');
+      p.className = 'price-bdt';
+      p.textContent = `৳ ${bdt.toLocaleString('en-US')} BDT`;
+      usdP.classList.add('price-usd');
+      card.insertBefore(p, usdP);
+    });
+  });
 })();
 </script>
 

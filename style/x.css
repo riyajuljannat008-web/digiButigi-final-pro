@@ -40,7 +40,28 @@ body {
   text-decoration: none;
 }
 
-.deliver { font-size: 12px; }
+/* Deliver block styles */
+.deliver{
+  display:inline-flex;
+  align-items:center;
+  gap:8px;
+  color:#6f1010;
+}
+.deliver i{ font-size:30px; color:#5074f6; }
+.deliver .our-location{
+  margin-left:6px;
+  color:#febd69;
+  text-decoration:none;
+  padding:2px 6px;
+  border:1px solid transparent;
+  border-radius:4px;
+}
+.deliver .our-location:hover{
+  text-decoration:underline;
+  border-color:#febd69;
+}
+
+
 
 .nav-search {
   display: flex; flex: 1;
@@ -224,24 +245,29 @@ body {
 .side-menu__panel::-webkit-scrollbar-track{ background: #f2f2f2; }
 
 /* ================= Responsive ================= */
-@media (max-width: 1024px){
+/* Large Desktop (≤1200px) */
+@media (max-width: 1200px){
   .nav-search{ margin: 0 10px; }
-  .product-grid{ grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); }
+  .product-grid{ grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); }
 }
 
-@media (max-width: 768px){
+/* Laptop (≤992px) */
+@media (max-width: 992px){
   .navbar{ flex-direction: column; align-items: flex-start; padding: 10px; }
   .nav-search{ width: 100%; margin: 10px 0; }
   .sub-navbar{ flex-wrap: wrap; }
+  .product-grid{ grid-template-columns: repeat(auto-fit, minmax(170px, 1fr)); }
+}
+
+/* Tablet (≤768px) */
+@media (max-width: 768px){
+  .nav-search{ width: 100%; }
+  .cart-row{ grid-template-columns: 64px 1fr auto; }
   .product-grid{ grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); }
 }
 
-@media (max-width: 640px){
-  .nav-search{ width: 100%; }
-  .cart-row{ grid-template-columns: 64px 1fr auto; }
-}
-
-@media (max-width: 480px){
+/* Phone (≤600px) */
+@media (max-width: 600px){
   .logo{ font-size: 18px; }
   .nav-right{ flex-direction: column; align-items: flex-start; margin-top: 10px; }
   .nav-search select, .nav-search input{ font-size: 14px; }
@@ -251,6 +277,20 @@ body {
   .side-menu__panel{ width: 88vw; }
 }
 
+/* Accessibility: reduce motion */
 @media (prefers-reduced-motion: reduce){
   .side-menu, .side-menu__panel{ transition: none; }
 }
+
+
+/* Price styles */
+.product-card .price-bdt{
+  font-weight: 700;
+  color: #111;
+  margin: 0 0 6px;
+}
+.product-card .price-usd{
+  color: #666;
+  font-size: 0.9em;
+}
+
