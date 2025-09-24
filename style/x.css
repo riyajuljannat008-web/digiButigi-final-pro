@@ -267,74 +267,38 @@ body {
   .product-grid{ grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); }
 }
 
-/* Phone (≤600px) */
+/* === MOBILE NAV & SUB-NAV FIX === */
 @media (max-width: 600px){
-  .logo{ font-size: 18px; }
-  .nav-right{ flex-direction: column; align-items: flex-start; margin-top: 10px; }
-  .nav-search select, .nav-search input{ font-size: 14px; }
-  .product-card img{ height: 120px; }
-  .cart-page{ flex-direction: column; }
-  .cart-left, .cart-right{ width: 100%; }
-  .side-menu__panel{ width: 88vw; }
+  .navbar{ display:flex; flex-wrap:wrap; align-items:center; gap:8px; padding:8px 10px; }
+  .nav-left{ order:1; flex:1 1 auto; display:flex; align-items:center; gap:8px; }
+  .nav-right{ order:2; margin-left:auto; display:flex; align-items:center; gap:10px; white-space:nowrap; flex:0 0 auto; }
+  .nav-search{ order:3; flex:1 0 100%; margin-top:6px; }
+
+  /* EN + Account hide */
+  .nav-right .lang,
+  .nav-right .account{ display:none !important; }
+
+  /* Compact pills for Orders/Cart */
+  .nav-right .orders br{ display:none; }
+  .nav-right .orders span{ display:none; }
+  .nav-right .orders a,
+  .nav-right .cart a{
+    display:inline-flex; align-items:center; gap:6px;
+    padding:6px 10px; background:#232f3e; color:#fff !important;
+    border-radius:16px; text-decoration:none; font-size:14px;
+  }
+
+  /* Sub-navbar: only All visible on mobile */
+  .sub-navbar{ justify-content:flex-start; }
+  .sub-navbar a{ display:none !important; }
+  .sub-navbar .all-btn{ display:inline-flex !important; }
 }
+
 
 /* Accessibility: reduce motion */
 @media (prefers-reduced-motion: reduce){
   .side-menu, .side-menu__panel{ transition: none; }
 }
-
-/* === Mobile navbar layout & sub-navbar filter === */
-@media (max-width: 600px){
-  /* Navbar: 2-row layout */
-  .navbar{
-    display:flex;
-    flex-wrap:wrap;
-    align-items:center;
-    gap:8px;
-    padding:8px 10px;
-  }
-  .nav-left{ order:1; flex:1 1 auto; display:flex; align-items:center; gap:8px; }
-  .nav-right{
-    order:2;
-    margin-left:auto;
-    display:flex;
-    align-items:center;
-    gap:10px;
-    white-space:nowrap;   /* এক লাইনে রাখো */
-    flex:0 0 auto;
-  }
-  .nav-search{
-    order:3;
-    flex:1 0 100%;        /* সার্চ বার নিজের লাইনে */
-    margin-top:6px;
-  }
-
-  /* EN + Account হাইড */
-  .nav-right .lang,
-  .nav-right .account{ display:none !important; }
-
-  /* Orders কে single-line করো */
-  .nav-right .orders br{ display:none; }
-  .nav-right .orders span{ display:none; }
-  .nav-right .orders a,
-  .nav-right .cart a{
-    display:inline-flex;
-    align-items:center;
-    gap:6px;
-    padding:6px 10px;
-    background:#232f3e;
-    color:#fff;
-    border-radius:16px;
-    text-decoration:none;
-    font-size:14px;
-  }
-
-  /* Sub-navbar: শুধু All দেখা যাবে */
-  .sub-navbar{ justify-content:flex-start; }
-  .sub-navbar a{ display:none !important; }    /* সব লিঙ্ক হাইড */
-  .sub-navbar .all-btn{ display:inline-flex; } /* শুধু All রাখো */
-}
-
 
 /* Price styles */
 .product-card .price-bdt{
