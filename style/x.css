@@ -267,28 +267,70 @@ body {
   .product-grid{ grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); }
 }
 
-/* === MOBILE NAV & SUB-NAV FIX === */
+/* === MOBILE LAYOUT: as per sketch === */
 @media (max-width: 600px){
-  .navbar{ display:flex; flex-wrap:wrap; align-items:center; gap:8px; padding:8px 10px; }
-  .nav-left{ order:1; flex:1 1 auto; display:flex; align-items:center; gap:8px; }
-  .nav-right{ order:2; margin-left:auto; display:flex; align-items:center; gap:10px; white-space:nowrap; flex:0 0 auto; }
-  .nav-search{ order:3; flex:1 0 100%; margin-top:6px; }
 
-  /* EN + Account hide */
-  .nav-right .lang,
+  /* Navbar = 2 rows */
+  .navbar{
+    display:flex;
+    flex-wrap:wrap;
+    align-items:center;
+    gap:8px;
+    padding:8px 10px;
+  }
+
+  /* Row-1: left side = logo + location */
+  .nav-left{
+    order:1;
+    flex:1 1 auto;
+    display:flex;
+    align-items:center;
+    gap:8px;
+  }
+
+  /* Row-1: right side = EN + Orders + Cart */
+  .nav-right{
+    order:2;
+    margin-left:auto;
+    display:flex;
+    align-items:center;
+    gap:10px;
+    flex:0 0 auto;
+    white-space:nowrap; /* এক লাইনে রাখো */
+  }
+
+  /* Row-2: full width search */
+  .nav-search{
+    order:3;
+    flex:1 0 100%;
+    margin-top:6px;
+  }
+
+  /* Account লুকাও, EN দেখাও ও কমপ্যাক্ট করো */
   .nav-right .account{ display:none !important; }
+  .nav-right .lang{
+    display:inline-flex !important;
+    align-items:center; gap:6px;
+    font-size:13px;
+    padding:6px 8px;
+    border-radius:16px;
+    background:#1f2937; color:#fff;
+  }
+  .nav-right .lang img{ width:18px; height:auto; }
 
-  /* Compact pills for Orders/Cart */
-  .nav-right .orders br{ display:none; }
-  .nav-right .orders span{ display:none; }
+  /* Orders/Cart = ছোট পিল বাটন */
+  .nav-right .orders br,
+  .nav-right .orders span{ display:none !important; }
   .nav-right .orders a,
   .nav-right .cart a{
     display:inline-flex; align-items:center; gap:6px;
-    padding:6px 10px; background:#232f3e; color:#fff !important;
-    border-radius:16px; text-decoration:none; font-size:14px;
+    padding:6px 10px;
+    background:#232f3e; color:#fff !important;
+    border-radius:16px; text-decoration:none;
+    font-size:14px;
   }
 
-  /* Sub-navbar: only All visible on mobile */
+  /* Sub-navbar: শুধু All থাকবে, বাকি লিঙ্ক Drawer-এ */
   .sub-navbar{ justify-content:flex-start; }
   .sub-navbar a{ display:none !important; }
   .sub-navbar .all-btn{ display:inline-flex !important; }
