@@ -1,0 +1,70 @@
+/* ===== Phone only (<= 767px) ===== */
+@media (max-width: 767px) {
+  :root { --navh:56px; --navbg:#131921; --subbg:#1e2a38; --accent:#ff9900; }
+
+  /* পুরো পেজকে ফিক্সড ন্যাভের নিচে নামানো */
+  body { padding-top: calc(56px + 10px + 48px); background:#f5f5f5; }
+
+  /* টপ ন্যাভ: existing .navbar ব্যবহার */
+  .navbar{
+    position:fixed; top:0; left:0; right:0; z-index:1000;
+    background:var(--navbg); color:#fff; box-shadow:0 2px 6px rgba(0,0,0,.25);
+    display:block; padding:0;
+  }
+
+  /* ওপরের সারি: logo | Location | Cart(0) */
+  .navbar .nav-left, .navbar .nav-right{ margin:0; }
+  .navbar .nav-left{
+    min-height:var(--navh);
+    display:flex; align-items:center; justify-content:space-between; gap:10px;
+    padding:8px 12px;
+  }
+  .navbar .logo{ font-size:22px; font-weight:800; color:#fff; text-decoration:none; }
+  .navbar .deliver{ display:inline-flex; align-items:center; gap:6px; color:#fff; }
+  .navbar .deliver i{ font-size:16px; }
+  .navbar .nav-right{ position:absolute; right:10px; top:10px; }
+  .navbar .nav-right .cart, .navbar .cart{
+    display:inline-flex; align-items:center; gap:6px;
+    background:#0f1620; border-radius:999px; padding:6px 10px; color:#fff; text-decoration:none;
+    font-weight:700;
+  }
+
+  /* সার্চ বার (তোমার .nav-search–ই থাকুক) */
+  .navbar .nav-search{
+    display:grid; grid-template-columns: 84px 1fr 46px; gap:8px;
+    padding:8px 12px 10px; background:#0f1620;
+  }
+  .navbar .nav-search select{
+    width:100%; appearance:none; border:1px solid #223; border-radius:8px;
+    background:#0b1119; color:#ddd; padding:10px 8px;
+  }
+  .navbar .nav-search input{
+    border:1px solid #223; border-radius:8px; padding:10px 12px; background:#fff; color:#111;
+  }
+  .navbar .nav-search button, .navbar .nav-search .search-btn{
+    border:none; border-radius:8px; background:var(--accent);
+    display:flex; align-items:center; justify-content:center; font-size:16px;
+  }
+
+  /* সাব-ন্যাভ: তোমার যে বারটিতে "All" লেখা আছে ও হ্যামবার্গার আইকন থাকে,
+     সেখানে শুধু ক্লাস যোগ করে নাও: wrapper = .sub-navbar, button/icon = .hamburger
+     (HTML বদলাতে হবে না; শুধু class যোগ করলে এই স্টাইল লাগবে) */
+  .sub-navbar{
+    position:fixed; top:calc(var(--navh) + 10px); left:0; right:0; z-index:999;
+    background:var(--subbg); color:#e8eef6; display:flex; align-items:center; gap:10px;
+    padding:10px 12px; border-top:1px solid #223; border-bottom:1px solid #223;
+  }
+  .sub-navbar .hamburger{
+    width:38px; height:38px; border:none; border-radius:8px; background:#c0c4cb66;
+    display:inline-flex; align-items:center; justify-content:center;
+  }
+  .sub-navbar .hamburger .bar{ width:18px; height:2px; background:#333; display:block; margin:2px 0; }
+  .sub-navbar .all, .sub-navbar .all-btn{ /* তোমার "All" টেক্সট/বাটন */
+    background:transparent; border:none; color:#e8eef6; font-size:18px; font-weight:700;
+  }
+
+  /* ডেস্কটপ ন্যাভ লুকাতে চাইলে (যদি আলাদা থাকে) */
+  .desktop-nav{ display:none !important; }
+}
+
+/* >767px এ কোনো পরিবর্তন নেই; সব আগের মতোই থাকবে */
