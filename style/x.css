@@ -245,6 +245,7 @@ body {
 .side-menu__panel::-webkit-scrollbar-track{ background: #f2f2f2; }
 
 /* ================= Responsive ================= */
+
 /* Large Desktop (≤1200px) */
 @media (max-width: 1200px){
   .nav-search{ margin: 0 10px; }
@@ -281,6 +282,50 @@ body {
 @media (prefers-reduced-motion: reduce){
   .side-menu, .side-menu__panel{ transition: none; }
 }
+
+
+/* === Mobile navbar fix: keep items from dropping below the bar === */
+@media (max-width: 600px){
+  .navbar{
+    display: flex;
+    flex-wrap: wrap;          /* 2-row layout */
+    align-items: center;
+    gap: 8px;
+    padding: 8px 10px;
+  }
+
+  .nav-left{ order: 1; flex: 0 0 auto; }
+  .nav-right{
+    order: 2;
+    margin-left: auto;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    flex: 0 0 auto;          /* don't let it push to new line */
+    white-space: nowrap;
+  }
+  .nav-search{
+    order: 3;
+    flex: 1 0 100%;          /* full width on its own row */
+    margin-top: 6px;
+  }
+
+  /* space বাঁচাতে লম্বা টেক্সটগুলো হাইড করি; Cart রাখা হলো */
+  .nav-right .account,
+  .nav-right .orders,
+  .nav-right .lang { display: none; }
+
+  /* Cart যেন ছোট জায়গায় ঠিক থাকে */
+  .nav-right .cart a{
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    white-space: nowrap;
+    font-size: 14px;
+  }
+}
+
+
 
 
 /* Price styles */
