@@ -283,49 +283,57 @@ body {
   .side-menu, .side-menu__panel{ transition: none; }
 }
 
-
-/* === Mobile navbar fix: keep items from dropping below the bar === */
+/* === Mobile navbar layout & sub-navbar filter === */
 @media (max-width: 600px){
+  /* Navbar: 2-row layout */
   .navbar{
-    display: flex;
-    flex-wrap: wrap;          /* 2-row layout */
-    align-items: center;
-    gap: 8px;
-    padding: 8px 10px;
+    display:flex;
+    flex-wrap:wrap;
+    align-items:center;
+    gap:8px;
+    padding:8px 10px;
   }
-
-  .nav-left{ order: 1; flex: 0 0 auto; }
+  .nav-left{ order:1; flex:1 1 auto; display:flex; align-items:center; gap:8px; }
   .nav-right{
-    order: 2;
-    margin-left: auto;
-    display: flex;
-    align-items: center;
-    gap: 10px;
-    flex: 0 0 auto;          /* don't let it push to new line */
-    white-space: nowrap;
+    order:2;
+    margin-left:auto;
+    display:flex;
+    align-items:center;
+    gap:10px;
+    white-space:nowrap;   /* এক লাইনে রাখো */
+    flex:0 0 auto;
   }
   .nav-search{
-    order: 3;
-    flex: 1 0 100%;          /* full width on its own row */
-    margin-top: 6px;
+    order:3;
+    flex:1 0 100%;        /* সার্চ বার নিজের লাইনে */
+    margin-top:6px;
   }
 
-  /* space বাঁচাতে লম্বা টেক্সটগুলো হাইড করি; Cart রাখা হলো */
-  .nav-right .account,
-  .nav-right .orders,
-  .nav-right .lang { display: none; }
+  /* EN + Account হাইড */
+  .nav-right .lang,
+  .nav-right .account{ display:none !important; }
 
-  /* Cart যেন ছোট জায়গায় ঠিক থাকে */
+  /* Orders কে single-line করো */
+  .nav-right .orders br{ display:none; }
+  .nav-right .orders span{ display:none; }
+  .nav-right .orders a,
   .nav-right .cart a{
-    display: inline-flex;
-    align-items: center;
-    gap: 6px;
-    white-space: nowrap;
-    font-size: 14px;
+    display:inline-flex;
+    align-items:center;
+    gap:6px;
+    padding:6px 10px;
+    background:#232f3e;
+    color:#fff;
+    border-radius:16px;
+    text-decoration:none;
+    font-size:14px;
   }
+
+  /* Sub-navbar: শুধু All দেখা যাবে */
+  .sub-navbar{ justify-content:flex-start; }
+  .sub-navbar a{ display:none !important; }    /* সব লিঙ্ক হাইড */
+  .sub-navbar .all-btn{ display:inline-flex; } /* শুধু All রাখো */
 }
-
-
 
 
 /* Price styles */
